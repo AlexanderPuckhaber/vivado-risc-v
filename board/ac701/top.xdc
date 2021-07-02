@@ -1,3 +1,5 @@
+# NOTE: this is copied from nexys-a7-100t configuration
+# I am not sure what the correct settings are!
 set_property BITSTREAM.CONFIG.UNUSEDPIN pulldown [current_design]
 set_property BITSTREAM.GENERAL.COMPRESS true [current_design]
 set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 4 [current_design]
@@ -9,7 +11,6 @@ set_property CFGBVS VCCO [current_design]
 ## Clock Signal
 set_property -dict { PACKAGE_PIN R3 IOSTANDARD LVDS_25 } [get_ports sys_diff_clock_clk_p]
 set_property -dict { PACKAGE_PIN P3 IOSTANDARD LVDS_25 } [get_ports sys_diff_clock_clk_n]
-#set_property CLOCK_DEDICATED_ROUTE BACKBONE [get_nets -of_objects [get_ports sys_diff_clock]]
 set_property CLOCK_DEDICATED_ROUTE BACKBONE [get_nets riscv_i/clk_wiz_0/inst/clk_in1_riscv_clk_wiz_0_0]
 create_clock -name sys_clk_pin -period 5.00 [get_ports sys_diff_clock]
 
