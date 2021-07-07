@@ -593,6 +593,7 @@ int main(void) {
             kprintf("Cannot read BOOT.ELF: %s\n", errno_to_str());
         }
         if (fd.obj.fs) f_close(&fd);
+        kprintf("looping\n");
         usleep(1000000);
     }
     return 0;
