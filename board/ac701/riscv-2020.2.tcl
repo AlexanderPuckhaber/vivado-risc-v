@@ -749,15 +749,8 @@ proc create_root_design { parentCell } {
   create_hier_cell_IO [current_bd_instance .] IO
 
   # Create instance: RocketChip, and set properties
-  set block_name Rocket64b1
-  set block_cell_name RocketChip
-  if { [catch {set RocketChip [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $RocketChip eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
+  global rocket_module_name
+  set RocketChip [create_bd_cell -type module -reference $rocket_module_name RocketChip]
   
   # Create instance: clk_wiz_0, and set properties
   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
