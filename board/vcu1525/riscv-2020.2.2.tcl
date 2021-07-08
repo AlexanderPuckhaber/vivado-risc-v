@@ -1,0 +1,1 @@
+board/vcu1525/riscv-2020.2.tcl
