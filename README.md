@@ -22,7 +22,8 @@ Latest Xilinx tools (Ver. 2020.1+) support debugging of RISC-V software over JTA
 [Xilinx KC705](https://www.xilinx.com/products/boards-and-kits/ek-k7-kc705-g.html) or
 [Digilent Genesys 2](https://reference.digilentinc.com/reference/programmable-logic/genesys-2/start) or
 [Digilent Nexys Video](https://reference.digilentinc.com/reference/programmable-logic/nexys-video/start) or
-[Digilent Nexys A7 100T](https://reference.digilentinc.com/reference/programmable-logic/nexys-a7/start) board.
+[Digilent Nexys A7 100T](https://reference.digilentinc.com/reference/programmable-logic/nexys-a7/start) or
+[Xilinx AC701](https://www.xilinx.com/products/boards-and-kits/ek-a7-ac701-g.html) board.
 
 VC707 allows to prototype more powerful system: up to 8 64-bit RISC-V cores, up to 100MHz clock speed, 1GB RAM.
 
@@ -32,6 +33,8 @@ Nexys Video is several times less expensive, academic discount is avaialble. It 
 
 Nexys A7 100T is least expensive supported board. It has small FPGA and only 128MB RAM, barely enough to run Linux on a single core RISC-V at 50MHz.
 
+AC701 supports up to 2 cores at 62.5MHz clock speed, with 1GB RAM.
+
 ## Workstation
 [Ubuntu 20 LTS](https://ubuntu.com/download/desktop) machine with min 32GB RAM is recommended.
 sudo access required.
@@ -40,9 +43,9 @@ sudo access required.
 [Vitis 2020.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-2.html) or
 [Vitis 2020.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-1.html) or
 [Vitis 2019.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2019-2.html).
-Vitis installation includes Vivado Design Suite – there is no need to install Vivado separately.
+Vitis installation includes Vivado Design Suite ï¿½ there is no need to install Vivado separately.
 
-Nexys Video and Nexys A7 100T are supported by free version of Vivado. KC705, VC707 and Genesys 2 require Vivado license.
+Nexys Video and Nexys A7 100T are supported by free version of Vivado. KC705, VC707, Genesys 2, and AC701 require Vivado license.
 
 If using Nexys Video, Nexys A7 100T or Genesys 2, install [Vivado Board Files for Digilent FPGA Boards](https://github.com/Digilent/vivado-boards).
 
@@ -69,6 +72,8 @@ For VC707, use `BOARD=vc707`
 For Genesys 2 use `BOARD=genesys2`
 
 For Nexys A7 100T use `BOARD=nexys-a7-100t`
+
+For AC701 use `BOARD=ac701`
 
 Available CONFIG values:
 * 64-bit big RISC-V cores, Linux capable:
@@ -111,12 +116,14 @@ make CONFIG=rocket64b2 BOARD=nexys-video bitstream vivado-gui
   - Genesys 2: Spansion s25fl256sxxxxxx0
   - KC705: Micron 28f00ap30t
   - VC707: Micron mt28gu01gaax1e
+  - AC701: Micron mt25ql256
 - Add configuration file:
   - Nexys A7 100T: workspace/rocket64b1/nexys-a7-100t-riscv.mcs
   - Nexys Video: workspace/rocket64b2/nexys-video-riscv.mcs
   - Genesys 2: workspace/rocket64b2/genesys2-riscv.mcs
   - KC705: workspace/rocket64b2/kc705-riscv.mcs
   - VC707: workspace/rocket64b2/vc707-riscv.mcs
+  - AC701: workspace/rocket64b2/ac701-riscv.mcs
 - Press Ok. Flashing will take a couple of minutes.
 - Right click on the FPGA device - Boot from Configuration Memory Device (or press the program button on the board)
 
