@@ -40,14 +40,22 @@ AC701 supports up to 2 cores at 62.5MHz clock speed, with 1GB RAM.
 sudo access required.
 
 ## Software
+[Vitis 2021.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2021-1.html) or
 [Vitis 2020.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-2.html) or
+<<<<<<< HEAD
 [Vitis 2020.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-1.html) or
 [Vitis 2019.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2019-2.html).
 Vitis installation includes Vivado Design Suite - there is no need to install Vivado separately.
+=======
+[Vitis 2020.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-1.html).
+Vitis installation includes Vivado Design Suite – there is no need to install Vivado separately.
+>>>>>>> f148226952b02a3c5058ceb6450a654ffe349a4b
 
 Nexys Video and Nexys A7 100T are supported by free version of Vivado. KC705, VC707, Genesys 2, and AC701 require Vivado license.
 
-If using Nexys Video, Nexys A7 100T or Genesys 2, install [Vivado Board Files for Digilent FPGA Boards](https://github.com/Digilent/vivado-boards).
+If using a Digilent board, install [Vivado Board Files for Digilent FPGA Boards](https://github.com/Digilent/vivado-boards).
+Note: installation instructions tell to "navigate to its '<version>/data/boards/board_files' directory".
+The directory does not exist in the latest Vivado, you have to create it first.
 
 # Usage
 
@@ -62,7 +70,7 @@ make update-submodules
 
 ## Build FPGA bitstream
 ```
-source /opt/Xilinx/Vivado/2020.2/settings64.sh
+source /opt/Xilinx/Vivado/2021.1/settings64.sh
 make CONFIG=rocket64b2 BOARD=nexys-video bitstream
 ```
 For KC705, use `BOARD=kc705`
@@ -105,7 +113,7 @@ Make sure to confirm right SD card device - all old data will be erased.
 ## Program the FPGA flash memory
 - Open Vivado
 ```
-source /opt/Xilinx/Vivado/2020.2/settings64.sh
+source /opt/Xilinx/Vivado/2021.1/settings64.sh
 make CONFIG=rocket64b2 BOARD=nexys-video bitstream vivado-gui
 ```
 - Open the hardware manager and open the target board
@@ -152,7 +160,7 @@ ssh debian@debian
 
 Open Vivado:
 ```
-source /opt/Xilinx/Vivado/2020.2/settings64.sh
+source /opt/Xilinx/Vivado/2021.1/settings64.sh
 make CONFIG=rocket64b2 BOARD=nexys-video vivado-gui
 ```
 The IO block in the design is the best place to add device controllers, like GPIO.
