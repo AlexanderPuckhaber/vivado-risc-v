@@ -43,7 +43,7 @@ sudo access required.
 [Vitis 2020.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-2.html) or
 [Vitis 2020.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-1.html) or
 [Vitis 2019.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2019-2.html).
-Vitis installation includes Vivado Design Suite � there is no need to install Vivado separately.
+Vitis installation includes Vivado Design Suite - there is no need to install Vivado separately.
 
 Nexys Video and Nexys A7 100T are supported by free version of Vivado. KC705, VC707, Genesys 2, and AC701 require Vivado license.
 
