@@ -195,6 +195,9 @@ if { $bCheckIPsPassed != 1 } {
 # MIG PRJ FILE TCL PROCs
 ##################################################################
 
+# Note: MIG configuration taken from materials linked to in this tutorial:
+# https://www.xilinx.com/support/documentation/boards_and_kits/ac701/2014_4/xtp225-ac701-mig-c-2014-4.pdf
+
 proc write_mig_file_riscv_mig_7series_0_0 { str_mig_prj_filepath } {
 
    file mkdir [ file dirname "$str_mig_prj_filepath" ]
