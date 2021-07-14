@@ -50,8 +50,8 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
-   create_project project_1 myproj -part xc7a100tcsg324-1
-   set_property BOARD_PART digilentinc.com:nexys-a7-100t:part0:1.0 [current_project]
+   create_project project_1 myproj -part xc7a200tfbg676-2
+   set_property BOARD_PART xilinx.com:ac701:part0:1.4 [current_project]
 }
 
 
