@@ -28,18 +28,6 @@ if { $eth_clock != "" } {
     set_max_delay -from $main_clock -through [get_pins -hier Ethernet/async_resetn] -datapath_only 10.0
     set_max_delay -from $eth_clock -through [get_pins -hier Ethernet/interrupt] -datapath_only 10.0
   }
-
-  if { [llength [get_clocks rgmii_rx_clk]] } {
-    set_max_delay -from $eth_clock -to rgmii_rx_clk -datapath_only 7.0
-    set_max_delay -from rgmii_rx_clk -to $eth_clock -datapath_only 7.0
-  }
-
-  if { [llength [get_clocks gmii_rx_clk]] } {
-    set_max_delay -from $eth_clock -to gmii_rx_clk -datapath_only 7.0
-    set_max_delay -from gmii_rx_clk -to $eth_clock -datapath_only 7.0
-    set_max_delay -from $eth_clock -to gmii_tx_clk -datapath_only 7.0
-    set_max_delay -from gmii_tx_clk -to $eth_clock -datapath_only 7.0
-  }
 }
 
 #------------------ SD card controller
@@ -73,13 +61,6 @@ if { [llength [get_pins -hier FanControl/clock]] } {
   set fan_ctrl_clock [get_clocks -of_objects [get_pins -hier FanControl/clock]]
   set_max_delay -from $fan_ctrl_clock -to [get_ports fan_en] -datapath_only 100.0
   set_max_delay -from $main_clock -through [get_pins -hier FanControl/async_resetn] -datapath_only 10.0
-}
-
-#------------------ IIC controller
-
-if { [llength [get_pins -quiet -hier IIC/s_axi_aclk]] } {
-  set iic_clock [get_clocks -of_objects [get_pins -hier IIC/s_axi_aclk]]
-  set_max_delay -from $iic_clock -through [get_pins -hier IIC/iic2intc_irpt] -datapath_only 10.0
 }
 
 #------------------ UART
@@ -141,6 +122,7 @@ set_max_delay -from $ddrc_clock -to $main_clock -datapath_only 10.0
 
 if { [llength [get_pins -quiet -hier IIC/s_axi_aclk]] } {
   set iic_clock [get_clocks -of_objects [get_pins -hier IIC/s_axi_aclk]]
+  set_max_delay -from $iic_clock -through [get_pins -hier IIC/iic2intc_irpt] -datapath_only 10.0
   set_max_delay -datapath_only -from $iic_clock -to [get_ports iic_main_scl_io] 40.0
   set_max_delay -datapath_only -from $iic_clock -to [get_ports iic_main_sda_io] 40.0
   set_max_delay -datapath_only -from [get_ports iic_main_scl_io] -to $iic_clock 40.0
