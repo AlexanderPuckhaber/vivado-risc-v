@@ -583,9 +583,8 @@ int main(void) {
 
     for (;;) {
         kputs("");
-        kprintf("RISC-V %d, Boot ROM V3.3 - alex says hi\n", __riscv_xlen);
+        kprintf("RISC-V %d, Boot ROM V3.3\n", __riscv_xlen);
         drv_status = STA_NOINIT;
-        kprintf("going for sd f_mount...\n");
         errno = f_mount(&fatfs, "", 1);
         if (errno) {
             kprintf("Cannot mount SD: %s\n", errno_to_str());
@@ -594,7 +593,6 @@ int main(void) {
             kprintf("Cannot read BOOT.ELF: %s\n", errno_to_str());
         }
         if (fd.obj.fs) f_close(&fd);
-        kprintf("looping\n");
         usleep(1000000);
     }
     return 0;
